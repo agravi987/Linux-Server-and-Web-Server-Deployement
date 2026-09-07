@@ -560,6 +560,8 @@ sudo systemctl restart myapp
 ⚠️ HTTP 503  →  Service Unavailable (overloaded)
 ```
 
+> 📸 **Screenshot:** If you encounter and fix an error, capture the terminal showing the error and its resolution.
+
 ---
 
 ## 🎉 Done

@@ -204,6 +204,8 @@ At this point:
 [✓] 🙈 .env is not tracked by Git
 ```
 
+> 📸 **Screenshot:** Capture the terminal showing the cloned repository structure with `ls -la ~/YOUR_REPO/`.
+
 > 🎉 If all checks pass, continue to: [⚡ Node.js Backend Deployment](06-nodejs-backend-deployment.md).
 
 ---

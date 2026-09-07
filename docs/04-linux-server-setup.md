@@ -202,6 +202,8 @@ Expected result:
 
 > 💡 If you see the Nginx welcome page, Nginx is working correctly.
 
+> 📸 **Screenshot:** Capture the browser showing the Nginx welcome page at `http://YOUR_EC2_PUBLIC_IP`.
+
 ---
 
 ## 📝 Step 7 — Create Application Directories
@@ -271,6 +273,10 @@ At this point:
 [✓] 📁 /var/www/myapp directory is created
 [✓] 🔄 PM2 is installed (optional)
 ```
+
+> 📸 **Screenshot:** Capture the terminal showing `systemctl status nginx` with `active (running)`.
+
+> 📸 **Screenshot:** Capture the terminal showing `node --version` and `npm --version` outputs.
 
 > 🎉 If all checks pass, continue to: [🐙 GitHub and Application Setup](05-github-and-application-setup.md).
 

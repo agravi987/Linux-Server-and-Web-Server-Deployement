@@ -133,6 +133,8 @@ or
 
 or an error page — that's fine as long as you get a response.
 
+> 📸 **Screenshot:** Capture the terminal showing `curl http://localhost:3000` response and `ss -lntp | grep 3000` showing Node.js listening.
+
 ### 4.4 🧪 Test a specific endpoint
 
 If you have API routes:
@@ -195,6 +197,8 @@ At this point:
 [✓] 🧪 curl http://localhost:3000 returns a response
 [✓] 🛑 App was stopped (we will restart it later with systemd)
 ```
+
+> 📸 **Screenshot:** Capture the terminal showing `ss -lntp | grep 3000` output.
 
 > 🎉 If all checks pass, continue to: [🐘 PostgreSQL Setup](07-postgresql-setup.md).
 

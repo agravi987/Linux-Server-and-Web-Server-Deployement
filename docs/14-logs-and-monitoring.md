@@ -290,6 +290,10 @@ At this point:
 [✓] 📊 Monitoring script created
 ```
 
+> 📸 **Screenshot:** Capture the terminal showing `bash ~/check-services.sh` output with all services active.
+
+> 📸 **Screenshot:** Capture the terminal showing `sudo journalctl -u myapp -n 10` with application logs.
+
 > 🎉 If all checks pass, continue to: [🔧 Troubleshooting](15-troubleshooting.md).
 
 ---

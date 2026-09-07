@@ -242,6 +242,8 @@ At this point:
 [✓] ⚡ Backend connects to database
 ```
 
+> 📸 **Screenshot:** Capture the PostgreSQL shell showing `CREATE DATABASE` and `CREATE ROLE` success messages.
+
 > 🎉 If all checks pass, continue to: [🎨 React Frontend Deployment](08-react-frontend-deployment.md).
 
 ---

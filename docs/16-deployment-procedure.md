@@ -248,6 +248,8 @@ At this point:
 [✓] ✅ Deployment tested and working
 ```
 
+> 📸 **Screenshot:** Capture the terminal showing `bash ~/YOUR_REPO/scripts/deploy.sh` output with "Deployment Successful" message.
+
 > 🎉 If all checks pass, continue to: [✅ Final Validation](17-final-validation.md).
 
 ---

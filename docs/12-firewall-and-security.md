@@ -247,6 +247,10 @@ At this point:
 [✓] 🔒 Website loads via HTTPS
 ```
 
+> 📸 **Screenshot:** Capture the terminal showing `sudo ufw status` with all rules listed.
+
+> 📸 **Screenshot:** Capture the terminal showing `sudo ss -lntp` with ports 3000 and 5432 bound to 127.0.0.1.
+
 > 🎉 If all checks pass, continue to: [🔄 systemd Application Service](13-systemd-application-service.md).
 
 ---

@@ -228,6 +228,8 @@ At this point you should know:
 [✓] 🔐 Required environment variables
 ```
 
+> 📸 **Screenshot:** Capture your terminal showing `ls -la` output of your project root.
+
 > 🎉 If all checks pass, continue to the next section: [☁️ AWS EC2 Setup](02-aws-ec2-setup.md).
 
 ---

@@ -183,6 +183,8 @@ At this point:
 [✓] 🔐 Files have correct permissions
 ```
 
+> 📸 **Screenshot:** Capture the terminal showing the build output and `ls /var/www/myapp/` with `index.html` visible.
+
 > 🎉 If all checks pass, continue to: [🔷 Nginx Configuration](09-nginx-configuration.md).
 
 ---

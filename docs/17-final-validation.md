@@ -274,6 +274,12 @@ If all boxes are checked, your deployment is complete and production-ready:
 ╚═══════════════════════════════════════════════════════╝
 ```
 
+> 📸 **Screenshot:** Capture the browser showing your fully deployed application at `https://yourdomain.com` with the 🔒 padlock.
+
+> 📸 **Screenshot:** Capture the terminal showing all services running with `bash ~/check-services.sh`.
+
+> 📸 **Screenshot:** Capture the terminal showing `sudo systemctl status myapp` with `active (running)` after a reboot.
+
 ---
 
 ## 🎯 Next Steps

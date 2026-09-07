@@ -183,6 +183,8 @@ http://YOUR_EC2_PUBLIC_IP
 
 You should see your React application. 🎨
 
+> 📸 **Screenshot:** Capture the browser showing your React application loaded at `http://YOUR_EC2_PUBLIC_IP`.
+
 ---
 
 ## ✅ Checkpoint
@@ -198,6 +200,10 @@ At this point:
 [✓] 🎨 React frontend loads at http://YOUR_EC2_PUBLIC_IP
 [✓] ⚡ API requests proxy to Node.js
 ```
+
+> 📸 **Screenshot:** Capture the terminal showing `sudo nginx -t` success and `curl -I http://YOUR_EC2_PUBLIC_IP` returning `200 OK`.
+
+> 📸 **Screenshot:** Capture the browser showing your React app working with API calls visible in Network tab.
 
 > 🎉 If all checks pass, continue to: [🌍 DNS Configuration](10-dns-configuration.md).
 

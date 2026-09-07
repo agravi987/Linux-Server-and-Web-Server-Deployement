@@ -193,6 +193,10 @@ At this point:
 [✓] ⚡ API works at /api/*
 ```
 
+> 📸 **Screenshot:** Capture the DNS provider dashboard showing the A record configuration.
+
+> 📸 **Screenshot:** Capture the terminal showing `nslookup yourdomain.com` resolving to your EC2 IP.
+
 > 🎉 If all checks pass, continue to: [🔒 HTTPS/SSL Setup](11-https-ssl-setup.md).
 
 ---

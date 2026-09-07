@@ -178,6 +178,8 @@ At this point:
 [✓] 🧭 You can explore the filesystem
 ```
 
+> 📸 **Screenshot:** Capture your terminal showing the successful SSH login and `lsb_release -a` output.
+
 > 🎉 If all checks pass, continue to: [🐧 Linux Server Setup](04-linux-server-setup.md).
 
 ---

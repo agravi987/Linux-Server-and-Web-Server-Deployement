@@ -132,6 +132,8 @@ Volume type:    gp3 (General Purpose SSD)
 3. 👁️ Click **View all instances**
 4. ⏳ Wait for the instance state to change from `Pending` to `Running`
 
+> 📸 **Screenshot:** Capture the EC2 instance launch confirmation page.
+
 ---
 
 ## 📝 Step 3 — Verify the Instance
@@ -193,6 +195,10 @@ At this point:
 [✓] 🔒 Ports 3000 and 5432 are NOT exposed
 [✓] 📍 Public IPv4 address noted down
 ```
+
+> 📸 **Screenshot:** Capture the EC2 Instances dashboard showing your running instance with its Public IPv4 address.
+
+> 📸 **Screenshot:** Capture the Security Group inbound rules showing SSH, HTTP, and HTTPS ports.
 
 > 🎉 If all checks pass, continue to: [🔐 SSH Connection](03-ssh-connection.md).
 
