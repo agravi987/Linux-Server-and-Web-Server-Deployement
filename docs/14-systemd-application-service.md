@@ -1,4 +1,4 @@
-# 13 — 🔄 systemd Application Service
+# 14 — 🔄 systemd Application Service
 
 > **Last Updated:** September 7, 2026
 
@@ -11,8 +11,8 @@ Make the Node.js application start automatically on boot and restart if it crash
 ## ✅ Prerequisites
 
 ```text
-[ ] ⚡ Node.js backend runs correctly (from 06-nodejs-backend-deployment.md)
-[ ] 🔥 Firewall configured (from 12-firewall-and-security.md)
+[ ] ⚡ Node.js backend runs correctly (from 07-nodejs-backend-deployment.md)
+[ ] 🔥 Firewall configured (from 13-firewall-and-security.md)
 ```
 
 ## 💡 What is systemd?
@@ -280,7 +280,7 @@ At this point:
 
 > 📸 **Screenshot:** Capture the terminal showing `sudo systemctl is-enabled myapp` returning `enabled`.
 
-> 🎉 If all checks pass, continue to: [📊 Logs & Monitoring](14-logs-and-monitoring.md).
+> 🎉 If all checks pass, continue to: [📊 Logs & Monitoring](15-logs-and-monitoring.md).
 
 ---
 

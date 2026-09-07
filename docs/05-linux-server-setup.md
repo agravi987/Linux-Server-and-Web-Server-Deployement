@@ -1,4 +1,4 @@
-# 04 — 🐧 Linux Server Setup
+# 05 — 🐧 Linux Server Setup
 
 > **Last Updated:** September 7, 2026
 
@@ -11,7 +11,7 @@ Install and configure all the software our application needs on the server.
 ## ✅ Prerequisites
 
 ```text
-[ ] 🔐 SSH connection works (from 03-ssh-connection.md)
+[ ] 🔐 SSH connection works (from 04-ssh-connection.md)
 [ ] 👤 You are logged into the server as ubuntu
 ```
 
@@ -278,7 +278,7 @@ At this point:
 
 > 📸 **Screenshot:** Capture the terminal showing `node --version` and `npm --version` outputs.
 
-> 🎉 If all checks pass, continue to: [🐙 GitHub and Application Setup](05-github-and-application-setup.md).
+> 🎉 If all checks pass, continue to: [🐙 GitHub and Application Setup](06-github-and-application-setup.md).
 
 ---
 

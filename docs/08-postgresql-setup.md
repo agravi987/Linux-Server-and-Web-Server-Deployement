@@ -1,4 +1,4 @@
-# 07 — 🐘 PostgreSQL Setup
+# 08 — 🐘 PostgreSQL Setup
 
 > **Last Updated:** September 7, 2026
 
@@ -11,8 +11,8 @@ Create a database and user for the application.
 ## ✅ Prerequisites
 
 ```text
-[ ] 🐘 PostgreSQL installed (from 04-linux-server-setup.md)
-[ ] 📦 Application code on server (from 05-github-and-application-setup.md)
+[ ] 🐘 PostgreSQL installed (from 05-linux-server-setup.md)
+[ ] 📦 Application code on server (from 06-github-and-application-setup.md)
 ```
 
 ## 💡 What is PostgreSQL?
@@ -244,7 +244,7 @@ At this point:
 
 > 📸 **Screenshot:** Capture the PostgreSQL shell showing `CREATE DATABASE` and `CREATE ROLE` success messages.
 
-> 🎉 If all checks pass, continue to: [🎨 React Frontend Deployment](08-react-frontend-deployment.md).
+> 🎉 If all checks pass, continue to: [🎨 React Frontend Deployment](09-react-frontend-deployment.md).
 
 ---
 

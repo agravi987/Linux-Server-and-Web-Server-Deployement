@@ -1,4 +1,4 @@
-# 14 — 📊 Logs & Monitoring
+# 15 — 📊 Logs & Monitoring
 
 > **Last Updated:** September 7, 2026
 
@@ -11,8 +11,8 @@ Learn where to find logs and how to monitor the application.
 ## ✅ Prerequisites
 
 ```text
-[ ] 🔄 Application running as systemd service (from 13-systemd-application-service.md)
-[ ] 🔷 Nginx configured (from 09-nginx-configuration.md)
+[ ] 🔄 Application running as systemd service (from 14-systemd-application-service.md)
+[ ] 🔷 Nginx configured (from 10-nginx-configuration.md)
 ```
 
 ## 📍 Where Are the Logs?
@@ -294,7 +294,7 @@ At this point:
 
 > 📸 **Screenshot:** Capture the terminal showing `sudo journalctl -u myapp -n 10` with application logs.
 
-> 🎉 If all checks pass, continue to: [🔧 Troubleshooting](15-troubleshooting.md).
+> 🎉 If all checks pass, continue to: [🔧 Troubleshooting](16-troubleshooting.md).
 
 ---
 

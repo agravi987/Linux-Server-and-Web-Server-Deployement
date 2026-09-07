@@ -1,4 +1,4 @@
-# 12 — 🔥 Firewall & Security
+# 13 — 🔥 Firewall & Security
 
 > **Last Updated:** September 7, 2026
 
@@ -251,7 +251,7 @@ At this point:
 
 > 📸 **Screenshot:** Capture the terminal showing `sudo ss -lntp` with ports 3000 and 5432 bound to 127.0.0.1.
 
-> 🎉 If all checks pass, continue to: [🔄 systemd Application Service](13-systemd-application-service.md).
+> 🎉 If all checks pass, continue to: [🔄 systemd Application Service](14-systemd-application-service.md).
 
 ---
 

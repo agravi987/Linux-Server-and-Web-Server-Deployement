@@ -1,4 +1,4 @@
-# 06 — ⚡ Node.js Backend Deployment
+# 07 — ⚡ Node.js Backend Deployment
 
 > **Last Updated:** September 7, 2026
 
@@ -11,7 +11,7 @@ Install dependencies, configure, and verify the Node.js backend API on the serve
 ## ✅ Prerequisites
 
 ```text
-[ ] 🐙 Code cloned to server (from 05-github-and-application-setup.md)
+[ ] 🐙 Code cloned to server (from 06-github-and-application-setup.md)
 [ ] 🔐 .env file configured
 [ ] ⚡ Node.js installed on server
 ```
@@ -200,7 +200,7 @@ At this point:
 
 > 📸 **Screenshot:** Capture the terminal showing `ss -lntp | grep 3000` output.
 
-> 🎉 If all checks pass, continue to: [🐘 PostgreSQL Setup](07-postgresql-setup.md).
+> 🎉 If all checks pass, continue to: [🐘 PostgreSQL Setup](08-postgresql-setup.md).
 
 ---
 
@@ -250,7 +250,7 @@ Make sure all required variables are present.
 
 ### ❓ "Database connection refused"
 
-This is expected if PostgreSQL is not configured yet. Continue to the next guide (07 — 🐘 PostgreSQL Setup).
+This is expected if PostgreSQL is not configured yet. Continue to the next guide (08 — 🐘 PostgreSQL Setup).
 
 ---
 

@@ -1,4 +1,4 @@
-# 09 — 🔷 Nginx Configuration
+# 10 — 🔷 Nginx Configuration
 
 > **Last Updated:** September 7, 2026
 
@@ -11,9 +11,9 @@ Configure Nginx to serve the React frontend and proxy API requests to Node.js.
 ## ✅ Prerequisites
 
 ```text
-[ ] 🔷 Nginx installed (from 04-linux-server-setup.md)
-[ ] 🎨 React frontend built (from 08-react-frontend-deployment.md)
-[ ] ⚡ Node.js backend runs on port 3000 (from 06-nodejs-backend-deployment.md)
+[ ] 🔷 Nginx installed (from 05-linux-server-setup.md)
+[ ] 🎨 React frontend built (from 09-react-frontend-deployment.md)
+[ ] ⚡ Node.js backend runs on port 3000 (from 07-nodejs-backend-deployment.md)
 ```
 
 ## 💡 How Nginx Works
@@ -205,7 +205,7 @@ At this point:
 
 > 📸 **Screenshot:** Capture the browser showing your React app working with API calls visible in Network tab.
 
-> 🎉 If all checks pass, continue to: [🌍 DNS Configuration](10-dns-configuration.md).
+> 🎉 If all checks pass, continue to: [🌍 DNS Configuration](11-dns-configuration.md).
 
 ---
 

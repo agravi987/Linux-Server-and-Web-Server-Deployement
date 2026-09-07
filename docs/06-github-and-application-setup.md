@@ -1,4 +1,4 @@
-# 05 — 🐙 GitHub and Application Setup
+# 06 — 🐙 GitHub and Application Setup
 
 > **Last Updated:** September 7, 2026
 
@@ -11,7 +11,7 @@ Clone your application from GitHub onto the EC2 server.
 ## ✅ Prerequisites
 
 ```text
-[ ] 📦 All software installed (from 04-linux-server-setup.md)
+[ ] 📦 All software installed (from 05-linux-server-setup.md)
 [ ] 🐙 Application code is pushed to a GitHub repository
 [ ] 🔐 You are logged into the server via SSH
 ```
@@ -206,7 +206,7 @@ At this point:
 
 > 📸 **Screenshot:** Capture the terminal showing the cloned repository structure with `ls -la ~/YOUR_REPO/`.
 
-> 🎉 If all checks pass, continue to: [⚡ Node.js Backend Deployment](06-nodejs-backend-deployment.md).
+> 🎉 If all checks pass, continue to: [⚡ Node.js Backend Deployment](07-nodejs-backend-deployment.md).
 
 ---
 

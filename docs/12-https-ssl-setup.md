@@ -1,4 +1,4 @@
-# 11 — 🔒 HTTPS / SSL Setup
+# 12 — 🔒 HTTPS / SSL Setup
 
 > **Last Updated:** September 7, 2026
 
@@ -11,7 +11,7 @@ Enable HTTPS on your server using a free SSL certificate from Let's Encrypt.
 ## ✅ Prerequisites
 
 ```text
-[ ] 🌍 DNS configured and domain resolves to your server (from 10-dns-configuration.md)
+[ ] 🌍 DNS configured and domain resolves to your server (from 11-dns-configuration.md)
 [ ] 🔷 Nginx is serving your application on port 80
 ```
 
@@ -229,7 +229,7 @@ At this point:
 
 > 📸 **Screenshot:** Capture the terminal showing `curl -I http://yourdomain.com` returning 301 redirect to HTTPS.
 
-> 🎉 If all checks pass, continue to: [🔥 Firewall & Security](12-firewall-and-security.md).
+> 🎉 If all checks pass, continue to: [🔥 Firewall & Security](13-firewall-and-security.md).
 
 ---
 

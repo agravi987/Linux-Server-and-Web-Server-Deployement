@@ -1,4 +1,4 @@
-# 02 — ☁️ AWS EC2 Setup
+# 03 — ☁️ AWS EC2 Setup
 
 > **Last Updated:** September 7, 2026
 
@@ -12,7 +12,7 @@ Create an Ubuntu Linux virtual server on AWS EC2 that will host our application.
 
 ```text
 [ ] ☁️ AWS account with billing enabled
-[ ] 📖 Completed: 01-project-setup.md
+[ ] 📖 Completed: 01-app-creation.md
 ```
 
 ## 💡 What is EC2?
@@ -200,7 +200,7 @@ At this point:
 
 > 📸 **Screenshot:** Capture the Security Group inbound rules showing SSH, HTTP, and HTTPS ports.
 
-> 🎉 If all checks pass, continue to: [🔐 SSH Connection](03-ssh-connection.md).
+> 🎉 If all checks pass, continue to: [🔐 SSH Connection](04-ssh-connection.md).
 
 ---
 

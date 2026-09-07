@@ -1,4 +1,4 @@
-# 15 — 🔧 Troubleshooting
+# 16 — 🔧 Troubleshooting
 
 > **Last Updated:** September 7, 2026
 
@@ -488,7 +488,7 @@ If you ran `npm start` directly (not as a systemd service), it stops when SSH di
 
 ### 🛠️ Fix — Use systemd
 
-Follow guide 13 — 🔄 systemd Application Service:
+Follow guide 14 — 🔄 systemd Application Service:
 
 ```bash
 sudo systemctl start myapp

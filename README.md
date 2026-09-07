@@ -4,7 +4,7 @@
 
 ## 🎯 Project Overview
 
-Deploy a **full-stack web application** on AWS EC2 — from zero to production.
+Build and deploy a **full-stack web application** on AWS EC2 — from **writing the code** to **production deployment**.
 
 ```
                     ┌─────────────────┐
@@ -38,6 +38,7 @@ Deploy a **full-stack web application** on AWS EC2 — from zero to production.
 
 | Component | Technology | Purpose |
 |-----------|-----------|---------|
+| 🛠️ App | React + Node.js | Full-stack application |
 | ☁️ Cloud | AWS EC2 | Virtual Linux server |
 | 🐧 OS | Ubuntu 24.04 LTS | Server operating system |
 | 🔷 Web Server | Nginx | Reverse proxy & static files |
@@ -54,23 +55,24 @@ Deploy a **full-stack web application** on AWS EC2 — from zero to production.
 
 | # | 📖 Guide | 🎯 What You Do |
 |---|---------|----------------|
-| 1 | [Project Setup](docs/01-project-setup.md) | 🏗️ Understand the project and prepare |
-| 2 | [AWS EC2 Setup](docs/02-aws-ec2-setup.md) | ☁️ Create your cloud server |
-| 3 | [SSH Connection](docs/03-ssh-connection.md) | 🔐 Connect to your server |
-| 4 | [Linux Server Setup](docs/04-linux-server-setup.md) | 🐧 Install software and configure |
-| 5 | [GitHub & App Setup](docs/05-github-and-application-setup.md) | 📦 Get code on the server |
-| 6 | [Node.js Backend](docs/06-nodejs-backend-deployment.md) | ⚡ Deploy and test the API |
-| 7 | [PostgreSQL](docs/07-postgresql-setup.md) | 🐘 Database setup |
-| 8 | [React Frontend](docs/08-react-frontend-deployment.md) | 🎨 Build and serve the frontend |
-| 9 | [Nginx](docs/09-nginx-configuration.md) | 🔷 Web server & reverse proxy |
-| 10 | [DNS](docs/10-dns-configuration.md) | 🌍 Domain name setup |
-| 11 | [HTTPS/SSL](docs/11-https-ssl-setup.md) | 🔒 Encrypt traffic |
-| 12 | [Firewall & Security](docs/12-firewall-and-security.md) | 🔥 Lock it down |
-| 13 | [systemd Service](docs/13-systemd-application-service.md) | 🔄 Auto-start on boot |
-| 14 | [Logs & Monitoring](docs/14-logs-and-monitoring.md) | 📊 Watch what's happening |
-| 15 | [Troubleshooting](docs/15-troubleshooting.md) | 🔧 Fix common problems |
-| 16 | [Deployment Procedure](docs/16-deployment-procedure.md) | 🚀 Redeploy after code changes |
-| 17 | [Final Validation](docs/17-final-validation.md) | ✅ Complete checklist |
+| 1 | [🛠️ Create Your App](docs/01-app-creation.md) | Build React + Node.js app from scratch |
+| 2 | [🏗️ Project Setup](docs/02-project-setup.md) | Understand the project and prepare |
+| 3 | [☁️ AWS EC2 Setup](docs/03-aws-ec2-setup.md) | Create your cloud server |
+| 4 | [🔐 SSH Connection](docs/04-ssh-connection.md) | Connect to your server |
+| 5 | [🐧 Linux Server Setup](docs/05-linux-server-setup.md) | Install software and configure |
+| 6 | [🐙 GitHub & App Setup](docs/06-github-and-application-setup.md) | Get code on the server |
+| 7 | [⚡ Node.js Backend](docs/07-nodejs-backend-deployment.md) | Deploy and test the API |
+| 8 | [🐘 PostgreSQL](docs/08-postgresql-setup.md) | Database setup |
+| 9 | [🎨 React Frontend](docs/09-react-frontend-deployment.md) | Build and serve the frontend |
+| 10 | [🔷 Nginx](docs/10-nginx-configuration.md) | Web server & reverse proxy |
+| 11 | [🌍 DNS](docs/11-dns-configuration.md) | Domain name setup |
+| 12 | [🔒 HTTPS/SSL](docs/12-https-ssl-setup.md) | Encrypt traffic |
+| 13 | [🔥 Firewall & Security](docs/13-firewall-and-security.md) | Lock it down |
+| 14 | [🔄 systemd Service](docs/14-systemd-application-service.md) | Auto-start on boot |
+| 15 | [📊 Logs & Monitoring](docs/15-logs-and-monitoring.md) | Watch what's happening |
+| 16 | [🔧 Troubleshooting](docs/16-troubleshooting.md) | Fix common problems |
+| 17 | [🚀 Deployment Procedure](docs/17-deployment-procedure.md) | Redeploy after code changes |
+| 18 | [✅ Final Validation](docs/18-final-validation.md) | Complete checklist |
 
 ---
 
@@ -94,6 +96,7 @@ linux-server-project/
 ## 🎓 What You'll Learn
 
 ```
+🛠️  App Creation     — Build a full-stack app from scratch
 ☁️  AWS EC2          — Launch and manage a cloud server
 🐧  Linux            — Navigate and configure an Ubuntu server
 🔐  SSH              — Connect securely to a remote server
@@ -122,8 +125,8 @@ linux-server-project/
 git clone https://github.com/YOUR_USERNAME/linux-server-project.git
 cd linux-server-project
 
-# 2️⃣ Follow the docs in order
-# Start with docs/01-project-setup.md
+# 2️⃣ Start with Guide 01 — Create Your App
+# Follow docs/01-app-creation.md
 ```
 
 ---

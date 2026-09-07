@@ -1,4 +1,4 @@
-# 16 — 🚀 Deployment Procedure
+# 17 — 🚀 Deployment Procedure
 
 > **Last Updated:** September 7, 2026
 
@@ -250,7 +250,7 @@ At this point:
 
 > 📸 **Screenshot:** Capture the terminal showing `bash ~/YOUR_REPO/scripts/deploy.sh` output with "Deployment Successful" message.
 
-> 🎉 If all checks pass, continue to: [✅ Final Validation](17-final-validation.md).
+> 🎉 If all checks pass, continue to: [✅ Final Validation](18-final-validation.md).
 
 ---
 

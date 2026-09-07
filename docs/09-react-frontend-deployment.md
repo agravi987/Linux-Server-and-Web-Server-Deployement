@@ -1,4 +1,4 @@
-# 08 — 🎨 React Frontend Deployment
+# 09 — 🎨 React Frontend Deployment
 
 > **Last Updated:** September 7, 2026
 
@@ -11,8 +11,8 @@ Build the React application into static files and serve them with Nginx.
 ## ✅ Prerequisites
 
 ```text
-[ ] 🔷 Nginx installed (from 04-linux-server-setup.md)
-[ ] 🐙 Code on server (from 05-github-and-application-setup.md)
+[ ] 🔷 Nginx installed (from 05-linux-server-setup.md)
+[ ] 🐙 Code on server (from 06-github-and-application-setup.md)
 ```
 
 ## 💡 How React Works in Production
@@ -185,7 +185,7 @@ At this point:
 
 > 📸 **Screenshot:** Capture the terminal showing the build output and `ls /var/www/myapp/` with `index.html` visible.
 
-> 🎉 If all checks pass, continue to: [🔷 Nginx Configuration](09-nginx-configuration.md).
+> 🎉 If all checks pass, continue to: [🔷 Nginx Configuration](10-nginx-configuration.md).
 
 ---
 

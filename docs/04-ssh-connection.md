@@ -1,4 +1,4 @@
-# 03 — 🔐 SSH Connection
+# 04 — 🔐 SSH Connection
 
 > **Last Updated:** September 7, 2026
 
@@ -11,7 +11,7 @@ Connect from your local computer to the EC2 server using SSH.
 ## ✅ Prerequisites
 
 ```text
-[ ] ☁️ EC2 instance is running (from 02-aws-ec2-setup.md)
+[ ] ☁️ EC2 instance is running (from 03-aws-ec2-setup.md)
 [ ] 🔑 Key pair (.pem file) downloaded
 [ ] 📍 Public IPv4 address noted down
 ```
@@ -180,7 +180,7 @@ At this point:
 
 > 📸 **Screenshot:** Capture your terminal showing the successful SSH login and `lsb_release -a` output.
 
-> 🎉 If all checks pass, continue to: [🐧 Linux Server Setup](04-linux-server-setup.md).
+> 🎉 If all checks pass, continue to: [🐧 Linux Server Setup](05-linux-server-setup.md).
 
 ---
 

@@ -1,13 +1,13 @@
 # 📚 Deployment Guide
 
 > **Last Updated:** September 7, 2026
-> **Version:** 1.0
+> **Version:** 2.0
 
 ---
 
 ## 🎯 What This Guide Does
 
-Takes you from **zero** to a **fully deployed** full-stack application on AWS EC2:
+Takes you from **zero** to a **fully deployed** full-stack application on AWS EC2 — including **building the app from scratch**.
 
 ```
                     ┌─────────────────┐
@@ -42,16 +42,18 @@ Takes you from **zero** to a **fully deployed** full-stack application on AWS EC
 ### ✅ Prerequisites
 
 ```text
-[ ] ☁️  AWS Account (with billing enabled)
+[ ] 💻 Local computer with terminal
+[ ] 📦 Node.js installed locally (v18+ or v20+)
+[ ] 🐙 GitHub account
+[ ] ☁️ AWS Account (with billing enabled)
 [ ] 🌍 Domain name (optional — can use IP address initially)
-[ ] 🐙 Your application code in a GitHub repository
-[ ] 💻 Local computer with terminal/SSH access
 ```
 
 ### 🧠 What You Will Learn
 
 | Skill | Description |
 |-------|-------------|
+| 🛠️ App Creation | Build a React + Node.js app from scratch |
 | ☁️ AWS EC2 | Launch and manage a cloud server |
 | 🐧 Linux | Navigate and configure an Ubuntu server |
 | 🔐 SSH | Connect securely to a remote server |
@@ -74,49 +76,41 @@ Takes you from **zero** to a **fully deployed** full-stack application on AWS EC
 
 | # | 📖 Guide | 🎯 What You Do | ⏱️ Est. Time |
 |---|---------|----------------|--------------|
-| 1 | [🏗️ Project Setup](01-project-setup.md) | Understand the project and prepare | ~10 min |
-| 2 | [☁️ AWS EC2 Setup](02-aws-ec2-setup.md) | Create your cloud server | ~15 min |
-| 3 | [🔐 SSH Connection](03-ssh-connection.md) | Connect to your server | ~5 min |
-| 4 | [🐧 Linux Server Setup](04-linux-server-setup.md) | Install software and configure | ~20 min |
-| 5 | [🐙 GitHub & Application Setup](05-github-and-application-setup.md) | Get code on the server | ~10 min |
-| 6 | [⚡ Node.js Backend](06-nodejs-backend-deployment.md) | Deploy and test the API | ~15 min |
-| 7 | [🐘 PostgreSQL](07-postgresql-setup.md) | Set up the database | ~15 min |
-| 8 | [🎨 React Frontend](08-react-frontend-deployment.md) | Build and serve the frontend | ~10 min |
-| 9 | [🔷 Nginx](09-nginx-configuration.md) | Configure web server and reverse proxy | ~15 min |
-| 10 | [🌍 DNS](10-dns-configuration.md) | Point your domain to the server | ~10 min |
-| 11 | [🔒 HTTPS/SSL](11-https-ssl-setup.md) | Enable HTTPS with Let's Encrypt | ~10 min |
-| 12 | [🔥 Firewall & Security](12-firewall-and-security.md) | Lock down the server | ~10 min |
-| 13 | [🔄 systemd Service](13-systemd-application-service.md) | Auto-start the app on boot | ~10 min |
-| 14 | [📊 Logs & Monitoring](14-logs-and-monitoring.md) | Watch and debug | ~10 min |
-| 15 | [🔧 Troubleshooting](15-troubleshooting.md) | Fix common problems | ~20 min |
-| 16 | [🚀 Deployment Procedure](16-deployment-procedure.md) | Redeploy after code changes | ~15 min |
-| 17 | [✅ Final Validation](17-final-validation.md) | Complete checklist | ~15 min |
+| 1 | [🛠️ Create Your App](01-app-creation.md) | Build React + Node.js app from scratch | ~30 min |
+| 2 | [🏗️ Project Setup](02-project-setup.md) | Understand the project and prepare | ~10 min |
+| 3 | [☁️ AWS EC2 Setup](03-aws-ec2-setup.md) | Create your cloud server | ~15 min |
+| 4 | [🔐 SSH Connection](04-ssh-connection.md) | Connect to your server | ~5 min |
+| 5 | [🐧 Linux Server Setup](05-linux-server-setup.md) | Install software and configure | ~20 min |
+| 6 | [🐙 GitHub & Application Setup](06-github-and-application-setup.md) | Get code on the server | ~10 min |
+| 7 | [⚡ Node.js Backend](07-nodejs-backend-deployment.md) | Deploy and test the API | ~15 min |
+| 8 | [🐘 PostgreSQL](08-postgresql-setup.md) | Set up the database | ~15 min |
+| 9 | [🎨 React Frontend](09-react-frontend-deployment.md) | Build and serve the frontend | ~10 min |
+| 10 | [🔷 Nginx](10-nginx-configuration.md) | Configure web server and reverse proxy | ~15 min |
+| 11 | [🌍 DNS](11-dns-configuration.md) | Point your domain to the server | ~10 min |
+| 12 | [🔒 HTTPS/SSL](12-https-ssl-setup.md) | Enable HTTPS with Let's Encrypt | ~10 min |
+| 13 | [🔥 Firewall & Security](13-firewall-and-security.md) | Lock down the server | ~10 min |
+| 14 | [🔄 systemd Service](14-systemd-application-service.md) | Auto-start the app on boot | ~10 min |
+| 15 | [📊 Logs & Monitoring](15-logs-and-monitoring.md) | Watch and debug | ~10 min |
+| 16 | [🔧 Troubleshooting](16-troubleshooting.md) | Fix common problems | ~20 min |
+| 17 | [🚀 Deployment Procedure](17-deployment-procedure.md) | Redeploy after code changes | ~15 min |
+| 18 | [✅ Final Validation](18-final-validation.md) | Complete checklist | ~15 min |
 
-**Total estimated time:** ~3 hours (including hands-on practice)
+**Total estimated time:** ~4 hours (including hands-on practice)
 
 ---
 
 ## 🎯 How to Use This Guide
 
 ```text
-1️⃣  Follow each section in order
-2️⃣  Run the commands shown
-3️⃣  Verify each step before moving on
-4️⃣  Use the ✅ checkpoints to confirm progress
-5️⃣  If something fails, check the 🔧 Troubleshooting guide (15)
+1️⃣  Start with Guide 01 — Create Your App (build the application locally)
+2️⃣  Push to GitHub
+3️⃣  Follow guides 02-18 to deploy on AWS EC2
+4️⃣  Run the commands shown, verify each step
+5️⃣  Use the ✅ checkpoints to confirm progress
+6️⃣  If something fails, check the 🔧 Troubleshooting guide (16)
 ```
 
 > **⚠️ Rule:** Never skip a verification step. If a command fails, fix it before continuing.
-
----
-
-## 🆘 Getting Help
-
-If you get stuck:
-
-1. 📖 Check the [Troubleshooting Guide](15-troubleshooting.md) first
-2. 🔍 Look for the error message in the relevant guide's troubleshooting section
-3. 💬 Ask for help with the specific error message you're seeing
 
 ---
 
@@ -125,11 +119,22 @@ If you get stuck:
 Use this to track your progress:
 
 ```text
-Phase 1: Infrastructure    [ ] AWS EC2 + SSH
-Phase 2: Server Setup      [ ] Linux + Software
-Phase 3: Application       [ ] Code + Database
-Phase 4: Web Server        [ ] Nginx + Frontend
-Phase 5: Security          [ ] DNS + HTTPS + Firewall
-Phase 6: Operations        [ ] systemd + Logs
-Phase 7: Validation        [ ] Final Checklist
+Phase 1: Build App        [ ] Guide 01 — Create React + Node.js app
+Phase 2: Infrastructure   [ ] Guides 02-04 — AWS EC2 + SSH
+Phase 3: Server Setup     [ ] Guides 05-06 — Linux + Software + GitHub
+Phase 4: Application      [ ] Guides 07-09 — Backend + Database + Frontend
+Phase 5: Web Server       [ ] Guide 10 — Nginx
+Phase 6: Security         [ ] Guides 11-13 — DNS + HTTPS + Firewall
+Phase 7: Operations       [ ] Guides 14-15 — systemd + Logs
+Phase 8: Validation       [ ] Guides 16-18 — Troubleshooting + Deploy + Checklist
 ```
+
+---
+
+## 🆘 Getting Help
+
+If you get stuck:
+
+1. 📖 Check the [🔧 Troubleshooting Guide](16-troubleshooting.md) first
+2. 🔍 Look for the error message in the relevant guide's troubleshooting section
+3. 💬 Ask for help with the specific error message you're seeing

@@ -1,4 +1,4 @@
-# 10 — 🌍 DNS Configuration
+# 11 — 🌍 DNS Configuration
 
 > **Last Updated:** September 7, 2026
 
@@ -11,7 +11,7 @@ Point a domain name to your EC2 server's public IP address.
 ## ✅ Prerequisites
 
 ```text
-[ ] 🔷 Nginx is configured and serving your app (from 09-nginx-configuration.md)
+[ ] 🔷 Nginx is configured and serving your app (from 10-nginx-configuration.md)
 [ ] 🌍 A domain name (registered at a registrar like Namecheap, GoDaddy, Google Domains, etc.)
 ```
 
@@ -197,7 +197,7 @@ At this point:
 
 > 📸 **Screenshot:** Capture the terminal showing `nslookup yourdomain.com` resolving to your EC2 IP.
 
-> 🎉 If all checks pass, continue to: [🔒 HTTPS/SSL Setup](11-https-ssl-setup.md).
+> 🎉 If all checks pass, continue to: [🔒 HTTPS/SSL Setup](12-https-ssl-setup.md).
 
 ---
 
