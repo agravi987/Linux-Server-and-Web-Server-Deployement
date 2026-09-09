@@ -47,18 +47,20 @@ Expected result:
 
 ## 📝 Step 2 — Clone Your Repository
 
-Replace with your actual repository URL:
+Clone the repository from GitHub to the server:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
+git clone https://github.com/agravi987/simple-basic-application.git
 ```
+
+> 💡 This clones the application into a folder named `simple-basic-application` on the server. You can replace the URL with your own repository if you created it with different credentials.
 
 If your repository is **private**, you have two options:
 
 **🔑 Option A — Use a personal access token:**
 
 ```bash
-git clone https://YOUR_USERNAME:YOUR_TOKEN@github.com/YOUR_USERNAME/YOUR_REPO.git
+git clone https://YOUR_USERNAME:YOUR_TOKEN@github.com/agravi987/simple-basic-application.git
 ```
 
 > 💡 Generate a token at GitHub → Settings → Developer settings → Personal access tokens → Fine-grained tokens.
@@ -78,7 +80,7 @@ Copy the output and add it to GitHub → Settings → SSH and GPG keys → New S
 Then clone using SSH:
 
 ```bash
-git clone git@github.com:YOUR_USERNAME/YOUR_REPO.git
+git clone git@github.com:agravi987/simple-basic-application.git
 ```
 
 ---
@@ -86,7 +88,7 @@ git clone git@github.com:YOUR_USERNAME/YOUR_REPO.git
 ## 📝 Step 3 — Verify the Clone
 
 ```bash
-ls ~/YOUR_REPO/
+ls ~/simple-basic-application/
 ```
 
 Expected result:
@@ -106,7 +108,7 @@ Expected result:
 ### ⚡ Backend
 
 ```bash
-ls ~/YOUR_REPO/backend/
+ls ~/simple-basic-application/backend/
 ```
 
 Expected:
@@ -120,7 +122,7 @@ Expected:
 ### 🎨 Frontend
 
 ```bash
-ls ~/YOUR_REPO/frontend/
+ls ~/simple-basic-application/frontend/
 ```
 
 Expected:
@@ -139,13 +141,13 @@ Expected:
 ### 5.1 📋 Copy the example file
 
 ```bash
-cp ~/YOUR_REPO/backend/.env.example ~/YOUR_REPO/backend/.env
+cp ~/simple-basic-application/backend/.env.example ~/simple-basic-application/backend/.env
 ```
 
 ### 5.2 ✏️ Edit the .env file
 
 ```bash
-nano ~/YOUR_REPO/backend/.env
+nano ~/simple-basic-application/backend/.env
 ```
 
 > 💡 `nano` is a simple text editor. Use arrow keys to navigate, `Ctrl+O` to save, `Ctrl+X` to exit.
@@ -164,7 +166,7 @@ JWT_SECRET=YOUR_JWT_SECRET
 ### 5.3 ✅ Verify .env is not tracked by Git
 
 ```bash
-cd ~/YOUR_REPO
+cd ~/simple-basic-application
 git status
 ```
 
@@ -180,15 +182,15 @@ git rm --cached backend/.env
 ## 📝 Step 6 — Verify Git Configuration
 
 ```bash
-cd ~/YOUR_REPO
+cd ~/simple-basic-application
 git remote -v
 ```
 
 Expected:
 
 ```text
-🐙 origin  https://github.com/YOUR_USERNAME/YOUR_REPO.git (fetch)
-🐙 origin  https://github.com/YOUR_USERNAME/YOUR_REPO.git (push)
+🐙 origin  https://github.com/agravi987/simple-basic-application.git (fetch)
+🐙 origin  https://github.com/agravi987/simple-basic-application.git (push)
 ```
 
 ---
@@ -204,7 +206,7 @@ At this point:
 [✓] 🙈 .env is not tracked by Git
 ```
 
-> 📸 **Screenshot:** Capture the terminal showing the cloned repository structure with `ls -la ~/YOUR_REPO/`.
+> 📸 **Screenshot:** Capture the terminal showing the cloned repository structure (e.g., with `tree -L 2 ~/simple-basic-application`, after installing `tree` via `sudo apt install tree -y`).
 
 > 🎉 If all checks pass, continue to: [⚡ Node.js Backend Deployment](07-nodejs-backend-deployment.md).
 
@@ -229,15 +231,15 @@ Check:
 Simply edit the file again:
 
 ```bash
-nano ~/YOUR_REPO/backend/.env
+nano ~/simple-basic-application/backend/.env
 ```
 
 Or delete and recreate:
 
 ```bash
-rm ~/YOUR_REPO/backend/.env
-cp ~/YOUR_REPO/backend/.env.example ~/YOUR_REPO/backend/.env
-nano ~/YOUR_REPO/backend/.env
+rm ~/simple-basic-application/backend/.env
+cp ~/simple-basic-application/backend/.env.example ~/simple-basic-application/backend/.env
+nano ~/simple-basic-application/backend/.env
 ```
 
 ### ❓ "nano editor is confusing"
@@ -246,11 +248,11 @@ Alternative editors:
 
 ```bash
 # 📝 Use vim (if you know it)
-vim ~/YOUR_REPO/backend/.env
+vim ~/simple-basic-application/backend/.env
 
 # 💻 Or just echo individual values
-echo "PORT=3000" > ~/YOUR_REPO/backend/.env
-echo "DATABASE_URL=postgresql://myapp_user:YOUR_DB@localhost:5432/myapp_db" >> ~/YOUR_REPO/backend/.env
+echo "PORT=3000" > ~/simple-basic-application/backend/.env
+echo "DATABASE_URL=postgresql://myapp_user:YOUR_DB@localhost:5432/myapp_db" >> ~/simple-basic-application/backend/.env
 ```
 
 ---

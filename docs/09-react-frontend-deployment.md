@@ -36,14 +36,14 @@ Build the React application into static files and serve them with Nginx.
 ## 📝 Step 1 — Navigate to the Frontend Directory
 
 ```bash
-cd ~/YOUR_REPO/frontend
+cd ~/simple-basic-application/frontend
 pwd
 ```
 
 Expected:
 
 ```text
-/home/ubuntu/YOUR_REPO/frontend
+/home/ubuntu/simple-basic-application/frontend
 ```
 
 ---
@@ -63,7 +63,7 @@ npm install
 Your React app needs to know the backend API URL. Create or edit the `.env` file in the frontend:
 
 ```bash
-nano ~/YOUR_REPO/frontend/.env
+nano ~/simple-basic-application/frontend/.env
 ```
 
 Add:
@@ -167,7 +167,7 @@ curl -I http://YOUR_EC2_PUBLIC_IP
 
 Expected: `HTTP/1.1 200 OK` ✅
 
-> 💡 You should see the Nginx welcome page for now. We will configure Nginx to serve React files in the Nginx guide (09).
+> 💡 You should see the Nginx welcome page for now. We will configure Nginx to serve React files in the Nginx guide (10).
 
 ---
 
@@ -184,6 +184,7 @@ At this point:
 ```
 
 > 📸 **Screenshot:** Capture the terminal showing the build output and `ls /var/www/myapp/` with `index.html` visible.
+> ![Capture the terminal showing the build output and `ls /var/www/myapp/` with `index.html` visible.](screenshots/09-frontend-build-in-webroot.png)
 
 > 🎉 If all checks pass, continue to: [🔷 Nginx Configuration](10-nginx-configuration.md).
 

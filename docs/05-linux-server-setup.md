@@ -195,14 +195,17 @@ Expected result:
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-<title>Welcome to nginx!</title>
-...
+  <head>
+    <title>Welcome to nginx!</title>
+    ...
+  </head>
+</html>
 ```
 
 > 💡 If you see the Nginx welcome page, Nginx is working correctly.
 
 > 📸 **Screenshot:** Capture the browser showing the Nginx welcome page at `http://YOUR_EC2_PUBLIC_IP`.
+> ![Capture the browser showing the Nginx welcome page at `http://YOUR_EC2_PUBLIC_IP`.](screenshots/05-nginx-welcome-page.png)
 
 ---
 
@@ -256,7 +259,7 @@ Expected result:
 🔄 5.x.x
 ```
 
-> 💡 We will use PM2 in the systemd guide (13) or directly. If you prefer pure systemd, PM2 is optional.
+> 💡 We will use systemd in guide 14 to manage the app. If you prefer PM2 instead of systemd, this is optional.
 
 ---
 

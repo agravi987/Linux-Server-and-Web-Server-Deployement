@@ -42,7 +42,7 @@ After=network.target postgresql.service
 Type=simple
 User=ubuntu
 Group=ubuntu
-WorkingDirectory=/home/ubuntu/YOUR_REPO/backend
+WorkingDirectory=/home/ubuntu/simple-basic-application/backend
 ExecStart=/usr/bin/node src/index.js
 Restart=on-failure
 RestartSec=5
@@ -82,7 +82,7 @@ WantedBy         →  🔄 Start this service when the system reaches multi-user
 Check that `src/index.js` exists in your backend:
 
 ```bash
-ls ~/YOUR_REPO/backend/src/index.js
+ls ~/simple-basic-application/backend/src/index.js
 ```
 
 If your main file is different (e.g., `server.js`, `app.js`), update the `ExecStart` line accordingly.
@@ -135,7 +135,7 @@ Active: active (running) →  ⚡ App is running
 ## 📝 Step 7 — Test the API
 
 ```bash
-curl http://localhost:3000
+curl http://localhost:3000/api/health
 ```
 
 Expected: A response from your backend. ⚡
@@ -370,7 +370,7 @@ Group=ubuntu
 And the application files are owned by that user:
 
 ```bash
-sudo chown -R ubuntu:ubuntu ~/YOUR_REPO
+sudo chown -R ubuntu:ubuntu ~/simple-basic-application
 ```
 
 ---

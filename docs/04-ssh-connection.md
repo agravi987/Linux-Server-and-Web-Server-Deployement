@@ -179,6 +179,7 @@ At this point:
 ```
 
 > 📸 **Screenshot:** Capture your terminal showing the successful SSH login and `lsb_release -a` output.
+> ![Capture your terminal showing the successful SSH login and `lsb_release -a` output.](screenshots/04-ssh-login-ubuntu.png)
 
 > 🎉 If all checks pass, continue to: [🐧 Linux Server Setup](05-linux-server-setup.md).
 

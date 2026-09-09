@@ -79,14 +79,14 @@ Build and deploy a **full-stack web application** on AWS EC2 — from **writing 
 ## 📁 Project Structure
 
 ```
-linux-server-project/
-├── 📁 frontend/          # 🎨 React app
-├── 📁 backend/           # ⚡ Node.js/Express API
-├── 📁 nginx/             # 🔷 Nginx config files
-├── 📁 systemd/           # 🔄 systemd service files
-├── 📁 scripts/           # 🛠️ Deployment scripts
-├── 📁 docs/              # 📚 This guide
-├── 🔒 .env.example       # 📝 Environment variable template
+.
+├── 📁 linux-server-project/   # 🛠️ Application code
+│   ├── 📁 frontend/           # 🎨 React app
+│   └── 📁 backend/            # ⚡ Node.js/Express API
+├── 📁 docs/                   # 📚 The 18 deployment guides
+│   └── 📁 screenshots/        # 📸 Proof-of-work screenshots
+├── 🖼️ linux server and web deployement architecture.png
+├── 🔒 .env.example            # 📝 Environment variable template
 ├── 🙈 .gitignore
 └── 📖 README.md
 ```

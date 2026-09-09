@@ -122,10 +122,32 @@ ALTER USER myapp_user SET timezone TO 'UTC';
 GRANT ALL PRIVILEGES ON DATABASE myapp_db TO myapp_user;
 ```
 
+**💡 Why:** Grants the user full access to the database.
+
 Expected:
 
 ```text
 ✅ GRANT
+```
+
+---
+
+## 📝 Step 7.1 — Grant Schema Permissions
+
+```sql
+GRANT ALL PRIVILEGES ON SCHEMA public TO myapp_user;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO myapp_user;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO myapp_user;
+```
+
+**💡 Why:** PostgreSQL 15+ removed default `CREATE` permission on the `public` schema. Without this, you will get `permission denied for schema public` when running `CREATE TABLE`.
+
+Expected:
+
+```text
+✅ GRANT
+✅ ALTER DEFAULT PRIVILEGES
+✅ ALTER DEFAULT PRIVILEGES
 ```
 
 ---
@@ -163,7 +185,7 @@ Type `\q` to exit.
 Edit the `.env` file:
 
 ```bash
-nano ~/YOUR_REPO/backend/.env
+nano ~/simple-basic-application/backend/.env
 ```
 
 Update the `DATABASE_URL` line:
@@ -181,7 +203,7 @@ DATABASE_URL=postgresql://myapp_user:YOUR_DB_PASSWORD@localhost:5432/myapp_db
 If your application uses an ORM (Sequelize, Prisma, TypeORM, Knex, etc.), run migrations:
 
 ```bash
-cd ~/YOUR_REPO/backend
+cd ~/simple-basic-application/backend
 
 # 🐘 For Sequelize
 npx sequelize db:migrate
@@ -200,6 +222,18 @@ npx knex migrate:latest
 
 If your app does not use migrations, skip this step.
 
+> 💡 The app we built in guide 01 does not use an ORM — instead it has a migration script. Run it once:
+
+```bash
+npm run init-db
+```
+
+Expected:
+
+```text
+✅ Database table created successfully
+```
+
 ---
 
 ## 📝 Step 12 — Test the Backend with Database
@@ -207,14 +241,20 @@ If your app does not use migrations, skip this step.
 Start the backend:
 
 ```bash
-cd ~/YOUR_REPO/backend
+cd ~/simple-basic-application/backend
 npm start &
 ```
 
 Test the API:
 
 ```bash
-curl http://localhost:3000
+curl http://localhost:3000/api/health
+```
+
+Expected:
+
+```json
+{"status":"ok","timestamp":"..."}
 ```
 
 If the database was the issue before, it should now work. ✅
@@ -318,6 +358,20 @@ CREATE DATABASE myapp_db;
 GRANT ALL PRIVILEGES ON DATABASE myapp_db TO myapp_user;
 \q
 ```
+
+### ❓ "permission denied for schema public"
+
+The user has database privileges but no `CREATE` permission on the `public` schema. This is the default since PostgreSQL 15. Grant schema privileges:
+
+```bash
+sudo -u postgres psql -d myapp_db
+GRANT ALL PRIVILEGES ON SCHEMA public TO myapp_user;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO myapp_user;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO myapp_user;
+\q
+```
+
+> 💡 This is also covered in **Step 7.1** above.
 
 ### ❓ "FATAL: Peer authentication failed"
 

@@ -114,60 +114,132 @@ Create a file called `src/index.js`:
 mkdir src
 ```
 
-**Instructions — build this yourself:**
+Paste the **full code below** into `src/index.js`:
 
-```text
-Create src/index.js with these requirements:
+```js
+import express from 'express';
+import pkg from 'pg';
+import cors from 'cors';
+import dotenv from 'dotenv';
 
-1. Import express, pg (Pool), cors, dotenv
-2. Load dotenv config
-3. Create an Express app
-4. Use cors() middleware
-5. Use express.json() middleware
-6. Create a PostgreSQL pool using DATABASE_URL from .env
+// 🐘 Load dotenv config
+dotenv.config();
 
-7. Create route: GET /api/health
-   - Returns { status: "ok", timestamp: new Date() }
+const { Pool } = pkg;
 
-8. Create route: POST /api/contact
-   - Expects JSON body: { name, email, message }
-   - Inserts into PostgreSQL "contacts" table
-   - Returns { success: true, id: result.rows[0].id }
-   - On error returns { success: false, error: message }
+// ⚡ Create an Express app
+const app = express();
 
-9. Create route: GET /api/contacts
-   - Queries all rows from "contacts" table
-   - Returns { contacts: result.rows }
+// 🔌 Use cors() middleware
+app.use(cors());
 
-10. Start server on PORT from .env (default 3000)
-    - Log: "Server running on port XXXX"
+// 📦 Use express.json() middleware
+app.use(express.json());
+
+// 🐘 Create a PostgreSQL pool using DATABASE_URL from .env
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+});
+
+// 🖥️ Route: GET /api/health
+app.get('/api/health', (req, res) => {
+  res.json({
+    status: 'ok',
+    timestamp: new Date()
+  });
+});
+
+// ✉️ Route: POST /api/contact
+app.post('/api/contact', async (req, res) => {
+  const { name, email, message } = req.body;
+
+  try {
+    const queryText = 'INSERT INTO contacts(name, email, message) VALUES($1, $2, $3) RETURNING id';
+    const result = await pool.query(queryText, [name, email, message]);
+
+    res.status(201).json({
+      success: true,
+      id: result.rows[0].id
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+// 📋 Route: GET /api/contacts
+app.get('/api/contacts', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM contacts');
+
+    res.json({
+      contacts: result.rows
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+// 🚀 Start server on PORT from .env (default 3000)
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 ```
 
 ### 3.5 📝 Create the database migration file
 
 Create `src/init-db.js`:
 
-**Instructions — build this yourself:**
+**Instructions — create this file by copying the full code below:**
 
-```text
-Create src/init-db.js with these requirements:
+```js
+import pkg from 'pg';
+import dotenv from 'dotenv';
 
-1. Import pg (Pool) and dotenv
-2. Load dotenv config
-3. Create a PostgreSQL pool using DATABASE_URL
+// 🐘 Load dotenv config
+dotenv.config();
 
-4. Create SQL query:
-   CREATE TABLE IF NOT EXISTS contacts (
-     id SERIAL PRIMARY KEY,
-     name VARCHAR(100) NOT NULL,
-     email VARCHAR(100) NOT NULL,
-     message TEXT NOT NULL,
-     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-   )
+const { Pool } = pkg;
 
-5. Run the query
-6. Log "Database table created successfully"
-7. Close the pool
+// 🔌 Create a PostgreSQL pool using DATABASE_URL
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+});
+
+async function initDatabase() {
+  // 📝 Create SQL query
+  const createTableQuery = `
+    CREATE TABLE IF NOT EXISTS contacts (
+      id SERIAL PRIMARY KEY,
+      name VARCHAR(100) NOT NULL,
+      email VARCHAR(100) NOT NULL,
+      message TEXT NOT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+  `;
+
+  try {
+    // ▶️ Run the query
+    await pool.query(createTableQuery);
+
+    // ✅ Log success message
+    console.log("Database table created successfully");
+  } catch (error) {
+    // ❌ Log error message
+    console.error("Error creating database table:", error.message);
+  } finally {
+    // 🔚 Close the pool
+    await pool.end();
+  }
+}
+
+initDatabase();
 ```
 
 ### 3.6 📝 Update package.json scripts
@@ -186,11 +258,7 @@ Edit `package.json` and add/modify the scripts section:
 
 ### 3.7 📝 Create the .env file
 
-```bash
-cp ../../.env.example .env
-```
-
-Wait — the `.env.example` is in the root. Let's create it manually:
+> 💡 There is no `.env.example` in the project yet — we create `.env` directly here and add the root `.env.example` template later in Step 5.
 
 ```bash
 cat > .env << 'EOF'
@@ -274,73 +342,500 @@ EOF
 
 ### 4.4 📝 Create the API service file
 
-Create `src/api.js`:
+Create `src/api.js` with the **full code below**:
 
-**Instructions — build this yourself:**
+```js
+// 🎨 Get the backend API URL from the Vite environment variable.
+const API_URL = import.meta.env.VITE_API_URL;
 
-```text
-Create src/api.js with these requirements:
+// 📤 Submit the contact form data to the backend.
+export async function submitContact(data) {
+  // Send a POST request to the contact API.
+  const response = await fetch(`${API_URL}/api/contact`, {
+    // ⚙️ Tell the server that we are sending data.
+    method: "POST",
 
-1. Get API_URL from import.meta.env.VITE_API_URL
-   (or process.env.REACT_APP_API_URL for Create React App)
+    // 📦 Tell the server that the request body is JSON.
+    headers: {
+      "Content-Type": "application/json",
+    },
 
-2. Export async function submitContact(data)
-   - data = { name, email, message }
-   - POST to ${API_URL}/api/contact
-   - Send JSON body
-   - Return the response JSON
+    // 🔁 Convert the JavaScript object into JSON.
+    body: JSON.stringify(data),
+  });
 
-3. Export async function getContacts()
-   - GET ${API_URL}/api/contacts
-   - Return the response JSON
+  // 🔄 Convert the server response from JSON to a JavaScript object.
+  return response.json();
+}
+
+// 📋 Get all contacts from the backend.
+export async function getContacts() {
+  // Send a GET request to the contacts API.
+  const response = await fetch(`${API_URL}/api/contacts`);
+
+  // Convert the server response from JSON to a JavaScript object.
+  return response.json();
+}
 ```
 
 ### 4.5 📝 Create the main App component
 
-Replace the contents of `src/App.jsx` (or `src/App.tsx`):
+Replace the contents of `src/App.jsx` (or `src/App.tsx`) with the **full code below**:
 
-**Instructions — build this yourself:**
+```jsx
+// Import useState for managing component state.
+import { useState } from "react";
 
-```text
-Replace src/App.jsx with these requirements:
+// Import the API functions from api.js.
+import { submitContact, getContacts } from "./api";
 
-1. Import useState from react
-2. Import submitContact and getContacts from ./api
+function App() {
+  // 🏷️ Store the name input value.
+  const [name, setName] = useState("");
 
-3. Create state variables:
-   - name, email, message (for form inputs)
-   - contacts (for displaying submissions)
-   - status (for success/error messages)
+  // 📧 Store the email input value.
+  const [email, setEmail] = useState("");
 
-4. Create handleSubmit function:
-   - Prevent default form submission
-   - Call submitContact({ name, email, message })
-   - On success: clear form, show "Message sent!" status
-   - On error: show error message
+  // 💬 Store the message input value.
+  const [message, setMessage] = useState("");
 
-5. Create loadContacts function:
-   - Call getContacts()
-   - Set contacts state with the result
+  // 📋 Store the contacts received from the backend.
+  const [contacts, setContacts] = useState([]);
 
-6. Render:
-   - A heading: "Contact Us"
-   - A form with:
-     - Input for name
-     - Input for email
-     - Textarea for message
-     - Submit button
-   - A status message area
-   - A button "Load Messages" that calls loadContacts
-   - A list showing contacts (if loaded)
+  // 📊 Store success or error messages.
+  const [status, setStatus] = useState("");
+
+  // 🖱️ Handle the contact form submission.
+  async function handleSubmit(event) {
+    // ⏸️ Prevent the browser from refreshing the page.
+    event.preventDefault();
+
+    try {
+      // 📤 Send the form data to the backend.
+      await submitContact({ name, email, message });
+
+      // 🧹 Clear the form inputs after successful submission.
+      setName("");
+      setEmail("");
+      setMessage("");
+
+      // ✅ Show a success message.
+      setStatus({ type: "success", text: "Message sent successfully!" });
+    } catch {
+      // ❌ Show an error message if the request fails.
+      setStatus({ type: "error", text: "Failed to send message. Please try again." });
+    }
+  }
+
+  // 📥 Load all contacts from the backend.
+  async function loadContacts() {
+    try {
+      // Get contacts from the backend API.
+      const data = await getContacts();
+
+      // 💾 Store the contacts in state.
+      setContacts(data.contacts);
+    } catch {
+      // ❌ Show an error message if loading fails.
+      setStatus({ type: "error", text: "Failed to load messages." });
+    }
+  }
+
+  return (
+    <div className="page">
+      {/* 🔝 Page header. */}
+      <header className="hero">
+        <span className="hero-badge">Get in touch</span>
+        <h1>Contact Us</h1>
+        <p>Questions, feedback, or just saying hi — we'd love to hear from you.</p>
+      </header>
+
+      {/* 📝 Contact form. */}
+      <form onSubmit={handleSubmit}>
+        <div className="card">
+          <h2 className="card-title">Send a message</h2>
+          <p className="card-subtitle">We usually reply within one business day.</p>
+
+          {/* 🏷️ Name input. */}
+          <div className="field">
+            <label htmlFor="name">Name</label>
+            <input
+              id="name"
+              type="text"
+              placeholder="Jane Doe"
+              value={name}
+              onChange={(event) => setName(event.target.value)}
+              required
+            />
+          </div>
+
+          {/* 📧 Email input. */}
+          <div className="field">
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              placeholder="jane@example.com"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              required
+            />
+          </div>
+
+          {/* 💬 Message textarea. */}
+          <div className="field">
+            <label htmlFor="message">Message</label>
+            <textarea
+              id="message"
+              placeholder="How can we help?"
+              value={message}
+              onChange={(event) => setMessage(event.target.value)}
+              required
+            />
+          </div>
+
+          {/* 📊 Display success or error status. */}
+          {status && (
+            <p className={`status status-${status.type}`}>{status.text}</p>
+          )}
+
+          {/* 📨 Submit the contact form. */}
+          <button type="submit" className="btn btn-primary">
+            Send Message
+          </button>
+        </div>
+      </form>
+
+      {/* 💾 Saved messages. */}
+      <div className="card">
+        <h2 className="card-title">Messages</h2>
+        <p className="card-subtitle">Everything that has been submitted so far.</p>
+
+        {/* 📥 Load contacts from the backend. */}
+        <button type="button" onClick={loadContacts} className="btn btn-secondary">
+          Load Messages
+        </button>
+
+        {/* 📋 Display contacts when they are loaded. */}
+        {contacts.length > 0 && (
+          <ul className="message-list">
+            {contacts.map((contact) => (
+              <li key={contact.id}>
+                <div className="message-header">
+                  <span className="message-name">{contact.name}</span>
+                  <span className="message-email">{contact.email}</span>
+                </div>
+                <p className="message-body">{contact.message}</p>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {contacts.length === 0 && (
+          <p className="empty-state">No messages loaded yet — click the button above.</p>
+        )}
+      </div>
+
+      {/* 🔚 Footer. */}
+      <footer className="footer">© 2026 · Built with React &amp; Vite</footer>
+    </div>
+  );
+}
+
+export default App;
 ```
 
-### 4.6 📝 Clean up default files
+### 4.6 📝 Add the CSS styling
 
-Remove the default Vite/CSS files you don't need:
+The App component uses CSS classes like `hero`, `card`, `field`, `btn`, and `message-list`. Replace the contents of `src/index.css` with the **full stylesheet below** (and remove the unused `src/App.css`):
 
 ```bash
-rm src/App.css src/index.css 2>/dev/null
+rm src/App.css 2>/dev/null
 ```
+
+```css
+/* 🎨 Design tokens */
+:root {
+  --bg: #0f172a;
+  --bg-soft: #16213e;
+  --surface: #ffffff;
+  --surface-muted: #f1f5f9;
+  --border: #e2e8f0;
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --primary-soft: #eef2ff;
+  --success: #15803d;
+  --success-bg: #dcfce7;
+  --error: #b91c1c;
+  --error-bg: #fee2e2;
+  --radius: 12px;
+  --shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+}
+
+/* 🔄 Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: linear-gradient(160deg, var(--bg) 0%, var(--bg-soft) 55%, #1e3a5f 100%);
+  min-height: 100vh;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 📐 Page layout */
+.page {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 48px 20px 80px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 32px;
+  color: #f8fafc;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #c7d2fe;
+  background: rgba(99, 102, 241, 0.2);
+  border: 1px solid rgba(129, 140, 248, 0.4);
+  border-radius: 999px;
+  padding: 6px 14px;
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.hero p {
+  color: #94a3b8;
+  font-size: 1rem;
+}
+
+/* 🃏 Cards */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px;
+  margin-bottom: 24px;
+}
+
+.card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.card-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+/* 📝 Form */
+.field {
+  margin-bottom: 16px;
+}
+
+.field label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--text);
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.field input:focus,
+.field textarea:focus {
+  background: #ffffff;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #94a3b8;
+}
+
+/* 🔘 Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  width: 100%;
+  color: #ffffff;
+  background: var(--primary);
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+.btn-secondary {
+  width: 100%;
+  color: var(--primary);
+  background: var(--primary-soft);
+  border: 1px solid #c7d2fe;
+}
+
+.btn-secondary:hover {
+  background: #e0e7ff;
+}
+
+/* 📊 Status messages */
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 20px;
+}
+
+.status-success {
+  color: var(--success);
+  background: var(--success-bg);
+}
+
+.status-error {
+  color: var(--error);
+  background: var(--error-bg);
+}
+
+/* 💬 Message list */
+.message-list {
+  list-style: none;
+}
+
+.message-list li {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 12px;
+  background: var(--surface-muted);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.message-list li:hover {
+  border-color: #c7d2fe;
+  box-shadow: 0 2px 10px rgba(79, 70, 229, 0.08);
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.message-name {
+  font-weight: 700;
+}
+
+.message-email {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.message-body {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #334155;
+  white-space: pre-wrap;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  padding: 24px 0 4px;
+}
+
+/* 🔚 Footer */
+.footer {
+  text-align: center;
+  color: #64748b;
+  font-size: 0.8rem;
+  margin-top: 40px;
+}
+
+/* 📱 Responsive */
+@media (max-width: 480px) {
+  .page {
+    padding-top: 32px;
+  }
+
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .card {
+    padding: 20px;
+  }
+}
+```
+
+> 💡 Keep `src/main.jsx` as generated by Vite (it imports `./index.css` and renders `<App />`).
 
 ### 4.7 📝 Update the .gitignore
 
@@ -437,7 +932,7 @@ linux-server-project/
 ### 7.1 🌐 Create a new repository on GitHub
 
 1. Go to https://github.com/new
-2. Repository name: `linux-server-project`
+2. Repository name: `simple-basic-application`
 3. Select **Public** or **Private**
 4. Do NOT initialize with README (you already have files)
 5. Click **Create repository**
@@ -448,11 +943,11 @@ linux-server-project/
 git add .
 git commit -m "feat: initial project setup with React frontend and Node.js backend"
 git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/linux-server-project.git
+git remote add origin https://github.com/YOUR_USERNAME/simple-basic-application.git
 git push -u origin main
 ```
 
-> 💡 Replace `YOUR_USERNAME` with your GitHub username.
+> 💡 Replace `YOUR_USERNAME` with your GitHub username. Then your repo URL will look like `https://github.com/agravi987/simple-basic-application.git`.
 
 ### 7.3 ✅ Verify on GitHub
 
@@ -463,7 +958,6 @@ Open your repository in a browser. You should see:
 📁 frontend/
 📄 .gitignore
 📄 .env.example
-📄 README.md
 ```
 
 ---
@@ -489,7 +983,7 @@ At this point:
 [✓] 🐙 Code pushed to GitHub
 ```
 
-> 🎉 If all checks pass, continue to: [☁️ AWS EC2 Setup](02-aws-ec2-setup.md).
+> 🎉 If all checks pass, continue to: [🏗️ Project Setup](02-project-setup.md).
 
 ---
 
@@ -531,7 +1025,7 @@ Set up authentication:
 
 ```bash
 # Option 1: Use a personal access token
-git remote set-url origin https://YOUR_TOKEN@github.com/YOUR_USERNAME/linux-server-project.git
+git remote set-url origin https://YOUR_TOKEN@github.com/YOUR_USERNAME/simple-basic-application.git
 
 # Option 2: Set up SSH key
 ssh-keygen -t ed25519 -C "your-email@example.com"

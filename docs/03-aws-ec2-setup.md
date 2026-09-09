@@ -108,11 +108,11 @@ Description:            Security group for myapp server
 
 Add these **Inbound rules:**
 
-| Type | Port | Source | Description |
-|------|------|--------|-------------|
-| 🔐 SSH | 22 | My IP | SSH access |
-| 🌐 HTTP | 80 | 0.0.0.0/0 | Web traffic |
-| 🔒 HTTPS | 443 | 0.0.0.0/0 | Secure web traffic |
+| Type     | Port | Source    | Description        |
+| -------- | ---- | --------- | ------------------ |
+| 🔐 SSH   | 22   | My IP     | SSH access         |
+| 🌐 HTTP  | 80   | 0.0.0.0/0 | Web traffic        |
+| 🔒 HTTPS | 443  | 0.0.0.0/0 | Secure web traffic |
 
 > 💡 **SSH rule:** Set source to **My IP** for security. This restricts SSH access to your current IP address only.
 
@@ -132,7 +132,8 @@ Volume type:    gp3 (General Purpose SSD)
 3. 👁️ Click **View all instances**
 4. ⏳ Wait for the instance state to change from `Pending` to `Running`
 
-> 📸 **Screenshot:** Capture the EC2 instance launch confirmation page.
+> 📸 **Screenshot:** Capture the EC2 instance running page
+> ![Capture the EC2 instance running page](screenshots/03-ec2-instance-running.png)
 
 ---
 
@@ -162,11 +163,11 @@ Go to your instance → **Security** tab → click the security group link.
 
 Verify these **Inbound rules** exist:
 
-| Port | Protocol | Source | Status |
-|------|----------|--------|--------|
-| 22 | TCP | YOUR_IP/32 | ✅ |
-| 80 | TCP | 0.0.0.0/0 | ✅ |
-| 443 | TCP | 0.0.0.0/0 | ✅ |
+| Port | Protocol | Source     | Status |
+| ---- | -------- | ---------- | ------ |
+| 22   | TCP      | YOUR_IP/32 | ✅     |
+| 80   | TCP      | 0.0.0.0/0  | ✅     |
+| 443  | TCP      | 0.0.0.0/0  | ✅     |
 
 > ⚠️ Do NOT add ports 3000 or 5432. Node.js and PostgreSQL should not be publicly accessible. Nginx will proxy traffic to them internally.
 
@@ -196,9 +197,8 @@ At this point:
 [✓] 📍 Public IPv4 address noted down
 ```
 
-> 📸 **Screenshot:** Capture the EC2 Instances dashboard showing your running instance with its Public IPv4 address.
-
 > 📸 **Screenshot:** Capture the Security Group inbound rules showing SSH, HTTP, and HTTPS ports.
+> ![Capture the Security Group inbound rules showing SSH, HTTP, and HTTPS ports.](screenshots/03-security-group-inbound-rules.png)
 
 > 🎉 If all checks pass, continue to: [🔐 SSH Connection](04-ssh-connection.md).
 

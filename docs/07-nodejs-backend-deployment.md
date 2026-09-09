@@ -35,14 +35,14 @@ Install dependencies, configure, and verify the Node.js backend API on the serve
 ## 📝 Step 1 — Navigate to the Backend Directory
 
 ```bash
-cd ~/YOUR_REPO/backend
+cd ~/simple-basic-application/backend
 pwd
 ```
 
 Expected:
 
 ```text
-/home/ubuntu/YOUR_REPO/backend
+/home/ubuntu/simple-basic-application/backend
 ```
 
 ---
@@ -113,8 +113,10 @@ Expected result:
 
 ### 4.3 🧪 Test the API directly
 
+-> use any working path like as defined in index.js
+
 ```bash
-curl http://localhost:3000
+curl http://localhost:3000/api/health
 ```
 
 > 💡 We test on `localhost` because Node.js should work directly on the server before putting Nginx in front of it.
@@ -122,34 +124,21 @@ curl http://localhost:3000
 Expected result (depends on your API):
 
 ```json
-{"status":"ok"}
+{ "status": "ok" }
 ```
 
 or
 
 ```json
-{"message":"Hello World"}
+{ "message": "Hello World" }
 ```
 
 or an error page — that's fine as long as you get a response.
 
-> 📸 **Screenshot:** Capture the terminal showing `curl http://localhost:3000` response and `ss -lntp | grep 3000` showing Node.js listening.
+> 📸 **Screenshot:** Capture the terminal showing `curl http://localhost:3000/api/health` response and `ss -lntp | grep 3000` showing Node.js listening.
+> ![Capture the terminal showing the `curl http://localhost:3000/api/health` response and `ss -lntp | grep 3000` showing Node.js listening.](screenshots/07-backend-health-and-port-3000.png)
 
-### 4.4 🧪 Test a specific endpoint
-
-If you have API routes:
-
-```bash
-curl http://localhost:3000/api/health
-```
-
-or
-
-```bash
-curl http://localhost:3000/api
-```
-
-### 4.5 📊 Check logs in the terminal
+### 4.4 📊 Check logs in the terminal
 
 If you see errors, read them carefully. Common issues:
 
@@ -243,7 +232,7 @@ sudo fuser -k 3000/tcp
 Check your `.env` file:
 
 ```bash
-cat ~/YOUR_REPO/backend/.env
+cat ~/simple-basic-application/backend/.env
 ```
 
 Make sure all required variables are present.

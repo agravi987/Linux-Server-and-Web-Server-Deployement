@@ -52,7 +52,7 @@ ssh -i ~/Downloads/myapp-key.pem ubuntu@YOUR_EC2_PUBLIC_IP
 ### Step 2 — 📁 Navigate to the project
 
 ```bash
-cd ~/YOUR_REPO
+cd ~/simple-basic-application
 ```
 
 ### Step 3 — 🐙 Pull the latest code
@@ -160,7 +160,7 @@ Expected: A valid response. ✅
 Create a deployment script for convenience:
 
 ```bash
-nano ~/YOUR_REPO/scripts/deploy.sh
+nano ~/simple-basic-application/scripts/deploy.sh
 ```
 
 Paste:
@@ -173,7 +173,7 @@ echo "🚀 === Starting Deployment ==="
 echo ""
 
 # 📁 Navigate to project
-cd ~/YOUR_REPO
+cd ~/simple-basic-application
 
 # 🐙 Pull latest code
 echo "📦 Pulling latest code..."
@@ -226,13 +226,13 @@ fi
 Make it executable:
 
 ```bash
-chmod +x ~/YOUR_REPO/scripts/deploy.sh
+chmod +x ~/simple-basic-application/scripts/deploy.sh
 ```
 
 ### 🚀 Run the deployment
 
 ```bash
-bash ~/YOUR_REPO/scripts/deploy.sh
+bash ~/simple-basic-application/scripts/deploy.sh
 ```
 
 ---
@@ -248,7 +248,7 @@ At this point:
 [✓] ✅ Deployment tested and working
 ```
 
-> 📸 **Screenshot:** Capture the terminal showing `bash ~/YOUR_REPO/scripts/deploy.sh` output with "Deployment Successful" message.
+> 📸 **Screenshot:** Capture the terminal showing `bash ~/simple-basic-application/scripts/deploy.sh` output with "Deployment Successful" message.
 
 > 🎉 If all checks pass, continue to: [✅ Final Validation](18-final-validation.md).
 

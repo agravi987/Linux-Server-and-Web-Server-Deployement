@@ -75,10 +75,10 @@ Make sure your code is pushed to GitHub.
 Command (run on your local computer):
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
+git clone https://github.com/agravi987/simple-basic-application.git
 ```
 
-Replace `YOUR_USERNAME` and `YOUR_REPO` with your actual values.
+> 💡 Replace the URL with your own repository if you created it with different credentials.
 
 Verify:
 
@@ -171,8 +171,8 @@ Expected result (example):
 ```json
 "scripts": {
   "start": "node src/index.js",
-  "dev": "nodemon src/index.js",
-  "build": "echo 'no build'"
+  "dev": "node --watch src/index.js",
+  "init-db": "node src/init-db.js"
 }
 ```
 
@@ -186,12 +186,14 @@ Expected result (example):
 
 ```json
 "scripts": {
-  "start": "react-scripts start",
-  "dev": "react-scripts start",
-  "build": "react-scripts build",
+  "dev": "vite",
+  "build": "vite build",
+  "lint": "eslint .",
   "preview": "vite preview"
 }
 ```
+
+> 💡 The app we built in guide 01 uses Vite — no `start` script is needed for the frontend. What matters is the `build` command.
 
 **📝 Note down:**
 
@@ -238,14 +240,7 @@ At this point you should know:
 
 ### ❓ "I don't have a GitHub repository yet"
 
-Create one:
-
-```bash
-# On your local computer
-mkdir myapp && cd myapp
-git init
-git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
-```
+Go back to guide 01, [Step 7 — Push to GitHub](01-app-creation.md#step-7--push-to-github), and follow the instructions there to create the repository and push your code.
 
 ### ❓ "I don't know my package manager"
 

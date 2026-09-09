@@ -58,11 +58,13 @@ Permission denied (publickey)
 ls -la ~/Downloads/myapp-key.pem
 ```
 
-Expected:
+Expected (after the fix below):
 
 ```text
--rw------- 1 user user ... myapp-key.pem
+-r-------- 1 user user ... myapp-key.pem
 ```
+
+If it shows `-rw-------` (or anything more permissive), fix it:
 
 ### 🛠️ Fix
 
@@ -235,7 +237,7 @@ ls /var/www/myapp/index.html
 If the file doesn't exist, copy the build output:
 
 ```bash
-cd ~/YOUR_REPO/frontend
+cd ~/simple-basic-application/frontend
 sudo cp -r dist/* /var/www/myapp/
 ```
 
@@ -395,7 +397,7 @@ ALTER USER myapp_user WITH PASSWORD 'new_password';
 Update `.env` with the new password:
 
 ```bash
-nano ~/YOUR_REPO/backend/.env
+nano ~/simple-basic-application/backend/.env
 ```
 
 Restart the app:

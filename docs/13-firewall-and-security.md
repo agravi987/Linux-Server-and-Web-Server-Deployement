@@ -25,7 +25,7 @@ Configure the Linux firewall to allow only necessary traffic.
 🖥️ Server
 ```
 
-> 💡 You already configured the AWS Security Group in guide 02. Now configure the Linux firewall.
+> 💡 You already configured the AWS Security Group in guide 03. Now configure the Linux firewall.
 
 ---
 

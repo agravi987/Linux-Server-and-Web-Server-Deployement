@@ -73,11 +73,11 @@ systemctl status nginx
 **🔍 Verify:**
 
 ```bash
-cd ~/YOUR_REPO/backend
+cd ~/simple-basic-application/backend
 curl http://localhost:3000
 
 # 🙈 Check .env is not tracked
-cd ~/YOUR_REPO
+cd ~/simple-basic-application
 git status | grep .env
 # Should return nothing
 ```

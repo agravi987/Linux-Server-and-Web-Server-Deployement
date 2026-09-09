@@ -140,7 +140,7 @@ sudo systemctl reload nginx
 ### 7.1 ⚡ Start the backend (if not running)
 
 ```bash
-cd ~/YOUR_REPO/backend
+cd ~/simple-basic-application/backend
 npm start &
 ```
 
@@ -184,8 +184,7 @@ http://YOUR_EC2_PUBLIC_IP
 You should see your React application. 🎨
 
 > 📸 **Screenshot:** Capture the browser showing your React application loaded at `http://YOUR_EC2_PUBLIC_IP`.
-
----
+> ![Your React application loaded at `http://YOUR_EC2_PUBLIC_IP`.](screenshots/10-react-app-working.png)
 
 ## ✅ Checkpoint
 
@@ -201,9 +200,8 @@ At this point:
 [✓] ⚡ API requests proxy to Node.js
 ```
 
-> 📸 **Screenshot:** Capture the terminal showing `sudo nginx -t` success and `curl -I http://YOUR_EC2_PUBLIC_IP` returning `200 OK`.
-
 > 📸 **Screenshot:** Capture the browser showing your React app working with API calls visible in Network tab.
+> ![Your React application working with API calls visible in the Network tab.](screenshots/10-react-app-working.png)
 
 > 🎉 If all checks pass, continue to: [🌍 DNS Configuration](11-dns-configuration.md).
 
