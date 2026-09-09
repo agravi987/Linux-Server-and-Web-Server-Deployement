@@ -134,13 +134,21 @@ Expected:
 
 ## 📝 Step 7.1 — Grant Schema Permissions
 
+**⚠️ Important:** You must connect to the `myapp_db` database first, otherwise these commands will run in the wrong database and permissions won't apply.
+
 ```sql
+-- Connect to the target database first
+\c myapp_db
+
+-- Now grant schema permissions inside myapp_db
 GRANT ALL PRIVILEGES ON SCHEMA public TO myapp_user;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO myapp_user;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO myapp_user;
 ```
 
 **💡 Why:** PostgreSQL 15+ removed default `CREATE` permission on the `public` schema. Without this, you will get `permission denied for schema public` when running `CREATE TABLE`.
+
+> ⚠️ **Common Mistake:** Running these GRANT commands while in the default `postgres` database (before `\c myapp_db`) will silently succeed but not apply to `myapp_db`. Always run `\c myapp_db` first.
 
 Expected:
 
@@ -361,15 +369,23 @@ GRANT ALL PRIVILEGES ON DATABASE myapp_db TO myapp_user;
 
 ### ❓ "permission denied for schema public"
 
-The user has database privileges but no `CREATE` permission on the `public` schema. This is the default since PostgreSQL 15. Grant schema privileges:
+The user has database privileges but no `CREATE` permission on the `public` schema. This is the default since PostgreSQL 15.
+
+**Common Cause:** You ran the GRANT commands while in the default `postgres` database instead of `myapp_db`.
+
+**Fix:** Connect to the correct database first, then grant schema privileges:
 
 ```bash
-sudo -u postgres psql -d myapp_db
+sudo -u postgres psql
+\c myapp_db
 GRANT ALL PRIVILEGES ON SCHEMA public TO myapp_user;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO myapp_user;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO myapp_user;
+ALTER DATABASE myapp_db OWNER TO myapp_user;
 \q
 ```
+
+> ⚠️ **Key Point:** Always run `\c myapp_db` before the GRANT commands. Running GRANT while in the `postgres` database will silently succeed but won't apply to your application database.
 
 > 💡 This is also covered in **Step 7.1** above.
 
