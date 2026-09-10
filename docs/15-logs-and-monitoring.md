@@ -291,8 +291,10 @@ At this point:
 ```
 
 > 📸 **Screenshot:** Capture the terminal showing `bash ~/check-services.sh` output with all services active.
+> ![check-services.sh output with all services active](screenshots/15-check-services-output.png)
 
 > 📸 **Screenshot:** Capture the terminal showing `sudo journalctl -u myapp -n 10` with application logs.
+> ![journalctl myapp logs](screenshots/15-journalctl-myapp.png)
 
 > 🎉 If all checks pass, continue to: [🔧 Troubleshooting](16-troubleshooting.md).
 

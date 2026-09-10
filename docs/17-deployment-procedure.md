@@ -249,6 +249,7 @@ At this point:
 ```
 
 > 📸 **Screenshot:** Capture the terminal showing `bash ~/simple-basic-application/scripts/deploy.sh` output with "Deployment Successful" message.
+> ![Deploy script output with success message](screenshots/17-deploy-script-output.png)
 
 > 🎉 If all checks pass, continue to: [✅ Final Validation](18-final-validation.md).
 

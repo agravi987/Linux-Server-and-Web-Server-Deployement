@@ -111,6 +111,7 @@ https://yourdomain.com
 You should see the 🔒 padlock icon in the address bar.
 
 > 📸 **Screenshot:** Capture the browser showing the 🔒 padlock icon and HTTPS URL in the address bar.
+> ![Browser showing HTTPS padlock icon](screenshots/12-https-padlock.png)
 
 ---
 
@@ -226,8 +227,7 @@ At this point:
 ```
 
 > 📸 **Screenshot:** Capture the terminal showing `sudo certbot renew --dry-run` success output.
-
-> 📸 **Screenshot:** Capture the terminal showing `curl -I http://yourdomain.com` returning 301 redirect to HTTPS.
+> ![Certbot renew dry-run success output](screenshots/12-https-certbot-renew.png)
 
 > 🎉 If all checks pass, continue to: [🔥 Firewall & Security](13-firewall-and-security.md).
 

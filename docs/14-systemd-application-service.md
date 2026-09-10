@@ -276,9 +276,9 @@ At this point:
 [✓] 🔄 (Optional) Survives server reboot
 ```
 
-> 📸 **Screenshot:** Capture the terminal showing `sudo systemctl status myapp` with `active (running)` status.
+> 📸 **Screenshot:** Capture the terminal showing `sudo systemctl status myapp` with `active (running)` status. and Capture the terminal showing `sudo systemctl is-enabled myapp` returning `enabled`.
 
-> 📸 **Screenshot:** Capture the terminal showing `sudo systemctl is-enabled myapp` returning `enabled`.
+![systemctl status showing active (running)](screenshots/14-systemd-status.png)
 
 > 🎉 If all checks pass, continue to: [📊 Logs & Monitoring](15-logs-and-monitoring.md).
 

@@ -60,9 +60,9 @@ An **A record** maps a domain name to an IP address.
 
 In your DNS provider's dashboard:
 
-| Type | Name | Value | TTL |
-|------|------|-------|-----|
-| 🌍 A | @ | YOUR_EC2_PUBLIC_IP | 300 |
+| Type | Name | Value              | TTL |
+| ---- | ---- | ------------------ | --- |
+| 🌍 A | @    | YOUR_EC2_PUBLIC_IP | 300 |
 
 Explanation:
 
@@ -75,9 +75,9 @@ TTL:    ⏱️ 300       →  300 seconds (5 minutes) — how long DNS caches th
 
 If you want `www.yourdomain.com` as well, add another record:
 
-| Type | Name | Value | TTL |
-|------|------|-------|-----|
-| 🌍 A | www | YOUR_EC2_PUBLIC_IP | 300 |
+| Type | Name | Value              | TTL |
+| ---- | ---- | ------------------ | --- |
+| 🌍 A | www  | YOUR_EC2_PUBLIC_IP | 300 |
 
 ---
 
@@ -194,8 +194,10 @@ At this point:
 ```
 
 > 📸 **Screenshot:** Capture the DNS provider dashboard showing the A record configuration.
+> ![DNS provider dashboard showing A record configuration](screenshots/11-dns-a-record.png)
 
 > 📸 **Screenshot:** Capture the terminal showing `nslookup yourdomain.com` resolving to your EC2 IP.
+> ![nslookup resolving to EC2 IP](screenshots/11-dns-nslookup.png)
 
 > 🎉 If all checks pass, continue to: [🔒 HTTPS/SSL Setup](12-https-ssl-setup.md).
 
